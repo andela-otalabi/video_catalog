@@ -9,6 +9,10 @@ var VideoSchema = new Schema({
 
     url: {
         type: String
+    },
+
+    createdAt: {
+        type: Date
     }
 });
 

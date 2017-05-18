@@ -11,6 +11,7 @@ module.exports = {
         var video = Video(req.body);
         video.title = req.body.title;
         video.url = req.url;
+        video.createdAt = Date.now();
         video.save(function(err, video){
             if (err) {
                 res.json(err);
@@ -49,7 +50,7 @@ module.exports = {
     },
 
     getVideos: function(req, res){
-        Video.find(function(err, videos){
+        Video.find({}).sort({createdAt: 'desc'}).exec(function(err, videos){
             if (err) {
                 res.send(err);
             }
