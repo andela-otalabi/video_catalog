@@ -1,0 +1,36 @@
+<html ng-app="VideoApp">
+    <head>
+        <title>video catalog</title>
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="video.css">
+    </head>
+    <body ng-controller="VideoCtrl">
+        <div class="top-part">
+            <form>
+                <input type="text" placeholder="enter title" ng-model="title">
+                <input type="file" ngf-select ng-model="videoFile" name="file" ngf-pattern="'video/*'"
+                    ngf-accept="'video/*'" ngf-min-height="100" ngf-resize="{width: 100, height: 100}"></br>
+                <div ng-cloak>{{progress}}</div>
+                <button type="submit" id="submit" ng-click="createVideo(videoFile)">Submit</button>
+            </form>
+        </div>
+        <div ng-cloak class="display-videos" ng-if="displayVideos">
+            <h2>Video List</h2>
+            <ul ng-repeat="video in videos">
+                <li>
+                   <p>{{video.title}}<p>
+                   <video width="400" controls src="{{video.url}}"></video>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
+        <script type="text/javascript" src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+        <script type="text/javascript" src="bower_components/ng-videosharing-embed/build/ng-videosharing-embed.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="service.js"></script>
+        <script type="text/javascript" src="controller.js"></script>
+    </body>
+</html>
