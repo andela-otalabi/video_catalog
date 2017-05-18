@@ -16,6 +16,24 @@ app.controller('VideoCtrl', ['$scope', 'Upload','Video',  function($scope, Uploa
         video[0].pause(); // video.play()
     }
 
+    $scope.favoriteVideo = function(video){
+        video.favorite = true;
+        Video.favoriteVideo(video).then(function(res){
+            window.location.reload(true);
+        }, function(err){
+            console.log('unfavorited');
+        })
+    };
+
+    $scope.unFavoriteVideo = function(video){
+        video.favorite = false;
+        Video.favoriteVideo(video).then(function(res){
+            window.location.reload(true);
+        }, function(err){
+            console.log('unfavorited');
+        })
+    }
+
     $scope.createVideo = function(file){
         Upload.upload({
             url: '/api/videos',

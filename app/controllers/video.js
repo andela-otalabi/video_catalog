@@ -56,5 +56,30 @@ module.exports = {
             }
             res.json(videos);
         })
-    }
+    }, 
+
+    favoriteVideo: function(req, res) {
+      var video = req.body;
+
+      Video.update( 
+        { _id: req.params.id}, 
+        { $set: {
+            title: req.body.title,
+            url: req.body.url,
+            favorite: req.body.favorite,
+          }
+        }, 
+        function(err, data) {
+          if(err) {
+            res.status(400).send({
+              message: err
+            });
+            return;
+          } 
+          else {
+            res.json(video);
+          }
+        }
+      )
+    },
 }

@@ -6,6 +6,7 @@ module.exports = function(app){
     app.route('/login').post(userController.userLogin);
     app.route('/api/videos').get(videoController.getVideos);
     app.route('/api/videos').post(videoController.uploadVideo, videoController.createVideo);
+    app.route('/api/video/favorite/:id').put(videoController.favoriteVideo);
     app.get('*', function(req, res){
         res.sendfile('./public/index.html');
     })

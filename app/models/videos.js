@@ -11,6 +11,11 @@ var VideoSchema = new Schema({
         type: String
     },
 
+    favorite: {
+        type: Boolean,
+        default: false
+    },
+
     createdAt: {
         type: Date
     }

@@ -18,8 +18,25 @@
             <h2>Video List</h2>
             <ul ng-repeat="video in videos">
                 <li>
-                   <p>{{video.title}}<p>
-                   <video width="400" controls src="{{video.url}}"></video>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>{{video.title}}<p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <video width="400" controls src="{{video.url}}"></video>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-1" ng-hide="video.favorite">
+                        <button type="button" class="pull-left"  ng-click="favoriteVideo(video)">favorite</button>
+                        </div>
+                        <div class="col-md-1" ng-show="video.favorite">
+                            <button type="button" class="pull-left" ng-click="unFavoriteVideo(video)">unfavorite</button>
+                        </div>
+                        <div class="col-md-1">
+                            <p ng-show="video.favorite" class="pull-right">Favorited!</p>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
