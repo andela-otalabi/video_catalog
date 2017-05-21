@@ -14,7 +14,7 @@ describe('optimal home page', function() {
         element(by.id('submit')).click();
 
         var videoList = element.all(by.repeater('video in videos'));
-        expect(videoList.count()).toEqual(0)
+        expect(videoList.count()).toEqual(1)
 
     })
 
